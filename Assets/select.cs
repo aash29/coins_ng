@@ -59,6 +59,7 @@ public class select : NetworkBehaviour {
 	void selectCoin(bool sel, GameObject coin)
 	{
 		if (coin != null) {
+			/*
 
 						Material[] mats = curCoin.GetComponent<Renderer>().materials;
 						List<Material> lmat = new List<Material>(mats);
@@ -78,7 +79,7 @@ public class select : NetworkBehaviour {
 					}
 					coin.GetComponent<Renderer>().materials = lmat.ToArray();
 					
-						
+			*/			
 		
 
 				}

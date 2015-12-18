@@ -27,7 +27,7 @@ public class coin : NetworkBehaviour {
 	}
 
 	void OnDrawGizmos() {
-		UnityEditor.Handles.Label(transform.position, id.ToString());
+		//UnityEditor.Handles.Label(transform.position, id.ToString());
 	}
 
 	
