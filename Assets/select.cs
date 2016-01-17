@@ -28,9 +28,7 @@ public class select : NetworkBehaviour {
 		return ray.GetPoint(distance);
 	}
 
-
-	[Command]
-	void CmdEndTurn()
+	void endTurn()
 	{
 
 
@@ -53,7 +51,6 @@ public class select : NetworkBehaviour {
 	{
 		selectCoin(false, curCoin);
 		curCoin=null;
-		GetComponentInParent<Player>().force = 1;
 		GameObject.Find("root1").GetComponent<globals>().curPlayer=(GameObject.Find("root1").GetComponent<globals>().curPlayer+1)%2;
 	}
 
@@ -138,7 +135,7 @@ public class select : NetworkBehaviour {
 										hr = hr * maxforce;
 								}
 								*/
-								Debug.Log("Coin pushed");
+								Debug.Log( "Coin pushed");
                                 Debug.Log(hr);
                                 curCoin.GetComponent<Rigidbody>().AddForce(hr,ForceMode.VelocityChange);
 								selectCoin(false, curCoin);
@@ -153,8 +150,8 @@ public class select : NetworkBehaviour {
 		}
 
 	}
-	[Command]
-	void CmdSetForce(float arg){
+
+	void getForce(float arg){
 		GetComponent<forceBar>().barDisplay+=arg;
 		float limspeed = Mathf.Min (curCoin.GetComponent<coin> ().limit_speed, GetComponentInParent<Player>().force);
 		if (GetComponent<forceBar> ().barDisplay > limspeed)
@@ -196,12 +193,12 @@ public class select : NetworkBehaviour {
 
 		if (Input.GetKey (KeyCode.Z)) {
 			if (curCoin !=  null)
-				CmdSetForce(0.01f);
+				getForce(0.01f);
 		}
 		
 		if (Input.GetKey (KeyCode.X)) {
 			if (curCoin !=  null)
-				CmdSetForce(-0.01f);
+				getForce(-0.01f);
 
 		}
 		
@@ -231,25 +228,24 @@ public class select : NetworkBehaviour {
 
 
 			if (Input.GetMouseButtonDown (0)) {
-            	CmdHandleClick(ev, 0, barForce);
+                            CmdHandleClick(ev, 0, barForce);
 
-			}
+						}
+						if (Input.GetMouseButtonDown (1)) {
+							CmdHandleClick(ev, 1, barForce);
+						}
 
-			if (Input.GetMouseButtonDown (1)) {
-				CmdHandleClick(ev, 1, barForce);
-			}
-
-			if (Input.GetKeyUp (KeyCode.Return)) {
-				CmdEndTurn ();
-				CmdChangeCurPlayer();
-			}
+						if (Input.GetKeyUp (KeyCode.Return)) {
+								endTurn ();
+								CmdChangeCurPlayer();
+						}
 
 						
 
-			if (Mathf.Abs(Input.GetAxis("Mouse ScrollWheel"))>0.001f){
-				if (curCoin !=  null)
-				CmdSetForce(Input.GetAxis("Mouse ScrollWheel")*0.2f);
-			}
+						if (Mathf.Abs(Input.GetAxis("Mouse ScrollWheel"))>0.001f){
+											if (curCoin !=  null)
+													getForce(Input.GetAxis("Mouse ScrollWheel")*0.2f);
+						}
 
 			
 
