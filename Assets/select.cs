@@ -196,7 +196,7 @@ public class select : NetworkBehaviour {
 				getForce(0.01f);
 		}
 		
-		if (Input.GetKey (KeyCode.X)) {
+		if (Input.GetKey (KeyCode.C)) {
 			if (curCoin !=  null)
 				getForce(-0.01f);
 
