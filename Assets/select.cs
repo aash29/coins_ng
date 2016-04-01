@@ -37,13 +37,23 @@ public class select : NetworkBehaviour {
 		if (GameObject.Find("root1").GetComponent<globals>().getNumPlayers()==1) 
 		{
 			GetComponentInParent<Player>().playerID = (GetComponentInParent<Player>().playerID + 1) % 2;
-		} 
+		}
+
+
+
+
+		//globals.score [0] = globals.score [0] - coinsInside[1] * modifier;
+		//globals.score [1] = globals.score [1] - coinsInside[0] * modifier;
+
 
 		Debug.Log(GetComponentInParent<Player>().playerID);
 		selectCoin(false, curCoin);
 		curCoin=null;
 		GetComponentInParent<Player>().force = 1;
 
+		foreach (var c1 in (GameObject.FindGameObjectsWithTag ("coin"))) {
+			c1.GetComponent<coin>().counted=0;
+		}
 	}
 
 
