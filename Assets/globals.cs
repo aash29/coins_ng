@@ -15,7 +15,7 @@ public class globals : NetworkBehaviour {
 	//public int playerID=0;
 
 	//[SyncVar]
-	static public int[] score={0,0};
+	static public int[] score={30,30};
 	//static public float force=1.0f;
 	static int turnNumber = 1;
 	//[SyncVar]
@@ -49,8 +49,8 @@ public class globals : NetworkBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		score [0] = 0;
-		score [1] = 0;
+		//score [0] = 0;
+		//score [1] = 0;
 
 
 
