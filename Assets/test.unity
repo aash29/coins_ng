@@ -159,7 +159,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 23.110706}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
 --- !u!1 &121643624
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,7 +234,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 23.110706}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
 --- !u!1 &390216159
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,7 +309,7 @@ Transform:
   m_LocalScale: {x: 1.0000014, y: 0.9999987, z: 23.110706}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 7
 --- !u!1 &533217774
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,7 +395,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 5
 --- !u!1001 &800473224
 Prefab:
   m_ObjectHideFlags: 0
@@ -632,6 +632,7 @@ GameObject:
   - 64: {fileID: 1296389390}
   - 23: {fileID: 1296389389}
   - 114: {fileID: 1296389393}
+  - 114: {fileID: 1296389394}
   m_Layer: 2
   m_Name: penaltyZone (1)
   m_TagString: Untagged
@@ -708,6 +709,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modifier: -1
+--- !u!114 &1296389394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1296389388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 0
+    i1: 0
+    i2: 0
+    i3: 0
+    i4: 0
+    i5: 0
+    i6: 0
+    i7: 0
+    i8: 0
+    i9: 0
+    i10: 0
+    i11: 0
+    i12: 0
+    i13: 0
+    i14: 0
+    i15: 0
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!1 &1419442569
 GameObject:
   m_ObjectHideFlags: 0
@@ -720,6 +753,7 @@ GameObject:
   - 64: {fileID: 1419442571}
   - 23: {fileID: 1419442570}
   - 114: {fileID: 1419442574}
+  - 114: {fileID: 1419442575}
   m_Layer: 2
   m_Name: penaltyZone
   m_TagString: Untagged
@@ -796,6 +830,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modifier: -1
+--- !u!114 &1419442575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1419442569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 0
+    i1: 0
+    i2: 0
+    i3: 0
+    i4: 0
+    i5: 0
+    i6: 0
+    i7: 0
+    i8: 0
+    i9: 0
+    i10: 0
+    i11: 0
+    i12: 0
+    i13: 0
+    i14: 0
+    i15: 0
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!1 &1678360023
 GameObject:
   m_ObjectHideFlags: 0
@@ -870,7 +936,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 23.110706}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 2
 --- !u!1 &1752257460
 GameObject:
   m_ObjectHideFlags: 0
@@ -1053,7 +1119,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1.0605142}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
 --- !u!1 &2094221863
 GameObject:
   m_ObjectHideFlags: 0
@@ -1128,4 +1194,4 @@ Transform:
   m_LocalScale: {x: 2.093341, y: 1, z: 2.0600264}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 6

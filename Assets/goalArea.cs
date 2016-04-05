@@ -20,7 +20,7 @@ public class goalArea : NetworkBehaviour {
 	[Command]
 	public void CmdDecreaseScore(int cp)
 	{
-		GameObject.Find("root1").GetComponent<globals> ().score [(cp+1)%2] -= 1;
+		GameObject.Find("root1").GetComponent<globals> ().score [(cp+1)%2] -= modifier;
 	}
 
 
