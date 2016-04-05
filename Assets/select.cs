@@ -28,7 +28,7 @@ public class select : NetworkBehaviour {
 		return ray.GetPoint(distance);
 	}
 
-	void endTurn()
+	IEnumerator endTurn()
 	{
 
 
@@ -48,9 +48,18 @@ public class select : NetworkBehaviour {
 		selectCoin(false, curCoin);
 		curCoin=null;
 		GetComponentInParent<Player>().force = 1;
+		CmdUncountCoins (0);
+		yield return new WaitForSeconds(1f);
+		CmdUncountCoins (1);
 
+	}
+
+
+	[Command]
+	public void CmdUncountCoins(int t)
+	{
 		foreach (var c1 in (GameObject.FindGameObjectsWithTag ("coin"))) {
-			c1.GetComponent<coin>().counted=0;
+			c1.GetComponent<coin>().counted=t;
 		}
 	}
 
@@ -246,7 +255,7 @@ public class select : NetworkBehaviour {
 						}
 
 						if (Input.GetKeyUp (KeyCode.Return)) {
-								endTurn ();
+								StartCoroutine("endTurn");
 								CmdChangeCurPlayer();
 						}
 

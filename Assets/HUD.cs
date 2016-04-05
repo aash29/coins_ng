@@ -30,8 +30,8 @@ public class HUD : NetworkBehaviour {
 
 			GUI.Box (new Rect (Screen.width - 150, Screen.height - 50, 50, 50), "Player ID:" + GetComponentInParent<Player> ().playerID.ToString (), customGuiStyle);
 
-			int s1 = globals.score [0];
-			int s2 = globals.score [1];
+			int s1 = g1.score [0];
+			int s2 = g1.score [1];
 
 			GUI.Box (new Rect (25, Screen.height - 50, 50, 50), s1.ToString () + " : ", customGuiStyle);
 			GUI.Box (new Rect (100, Screen.height - 50, 50, 50), s2.ToString (), customGuiStyle);

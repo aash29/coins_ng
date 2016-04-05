@@ -14,15 +14,18 @@ public class globals : NetworkBehaviour {
 
 	//public int playerID=0;
 
-	//[SyncVar]
-	static public int[] score={30,30};
+	//[SyncListInt]
+	public SyncListInt score = new SyncListInt();
 	//static public float force=1.0f;
 	static int turnNumber = 1;
 	//[SyncVar]
 	//static public Dictionary<int, GameObject> coinDict = new Dictionary<int, GameObject>();
 	// Use this for initialization
 	void Start () {
-
+		score.Add (30);
+		score.Add (30);
+		//score [0] = 30;
+		//score [1] = 30;
 
 
 	}
@@ -42,8 +45,7 @@ public class globals : NetworkBehaviour {
 	{
 		curPlayer = cp;
 	}
-
-
+		
 
 	
 

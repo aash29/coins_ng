@@ -8,7 +8,8 @@ public class coin : NetworkBehaviour {
 	public int player;
 	private float currentSpeed;
 	public float limit_speed;
-	public int counted = 0;
+	[SyncVar]
+	public int counted = 1;
 	// the current direction of travel
 	private Vector2 currentDir;
 	public int id;

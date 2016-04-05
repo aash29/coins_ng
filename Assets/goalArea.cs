@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
-public class goalArea : MonoBehaviour {
+public class goalArea : NetworkBehaviour {
 	int[] coinsInside={0,0};
 	public int modifier=1;
 	// Use this for initialization
@@ -9,13 +10,29 @@ public class goalArea : MonoBehaviour {
 
 	}
 
+	[Command]
+	public void CmdResetCoin(int id)
+	{
+		coin c1 = GameObject.Find("root1").GetComponent<setupLevel> ().coinDict [id].GetComponent<coin>();
+		c1.counted = 1;
+	}
+
+	[Command]
+	public void CmdDecreaseScore(int cp)
+	{
+		GameObject.Find("root1").GetComponent<globals> ().score [(cp+1)%2] -= 1;
+	}
+
+
 	void OnTriggerStay(Collider other) {
 		coin oc = other.GetComponentInParent<coin> ();
 		int cp = other.GetComponentInParent<coin> ().player;
 		if (oc.counted==0) {
 			coinsInside [cp]++;
-			other.GetComponentInParent<coin> ().counted = 1;
-			globals.score [(cp+1)%2] -= 1;
+			oc.counted = 1;
+			CmdResetCoin(oc.id);
+			CmdDecreaseScore (cp);
+			//GameObject.Find("root1").GetComponent<globals> ().score [(cp+1)%2] -= 1;
 		}
 	}
 
