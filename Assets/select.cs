@@ -28,8 +28,10 @@ public class select : NetworkBehaviour {
 		return ray.GetPoint(distance);
 	}
 
+
+	//IEnumerator CmdEndTurn()
 	[Command]
-	IEnumerator CmdEndTurn()
+	void CmdEndTurn()
 	{
 
 
@@ -48,13 +50,17 @@ public class select : NetworkBehaviour {
 		Debug.Log(GetComponentInParent<Player>().playerID);
 		selectCoin(false, curCoin);
 		curCoin=null;
+		//GetComponentInParent<Player>().force = 1;
 		GetComponentInParent<Player>().force = 1;
 		CmdUncountCoins (0);
-		yield return new WaitForSeconds(1f);
-		CmdUncountCoins (1);
-
 	}
 
+
+	IEnumerator uncountCoinsAfterPause(float t)
+	{
+		yield return new WaitForSeconds(t);
+		CmdUncountCoins (1);
+	}
 
 	[Command]
 	public void CmdUncountCoins(int t)
@@ -65,15 +71,6 @@ public class select : NetworkBehaviour {
 	}
 
 
-	
-
-	void startTurn()
-	{
-		selectCoin(false, curCoin);
-		curCoin=null;
-		//GetComponentInParent<Player>().force = 1;
-		GameObject.Find("root1").GetComponent<globals>().curPlayer=(GameObject.Find("root1").GetComponent<globals>().curPlayer+1)%2;
-	}
 
 	
 
@@ -175,8 +172,10 @@ public class select : NetworkBehaviour {
 	void CmdSetForce(float arg){
 		GetComponent<forceBar>().barDisplay+=arg;
 		float limspeed = Mathf.Min (curCoin.GetComponent<coin> ().limit_speed, GetComponentInParent<Player>().force);
-		if (GetComponent<forceBar> ().barDisplay > limspeed)
-						GetComponent<forceBar> ().barDisplay = limspeed;
+		Debug.Log (GetComponentInParent<Player> ().force);
+		if (GetComponent<forceBar> ().barDisplay > limspeed) {
+			GetComponent<forceBar> ().barDisplay = limspeed;
+		}
 		if (GetComponent<forceBar>().barDisplay<0.0f)
 			GetComponent<forceBar>().barDisplay=0.0f;
 		}
@@ -254,18 +253,15 @@ public class select : NetworkBehaviour {
 			}
 
 			if (Input.GetKeyUp (KeyCode.Return)) {
-								StartCoroutine("endTurn");
+								CmdEndTurn();
+								StartCoroutine (uncountCoinsAfterPause (1f));
+								//GameObject.Find("root1").GetComponent<globals> ().curPlayer = (GameObject.Find("root1").GetComponent<globals> ().curPlayer + 1 )% 2;
 								CmdChangeCurPlayer();
 			}
 			if (Input.GetMouseButtonDown (1)) {
 				CmdHandleClick(ev, 1, barForce);
 			}
-
-			if (Input.GetKeyUp (KeyCode.Return)) {
-				CmdEndTurn ();
-				CmdChangeCurPlayer();
-			}
-
+				
 
 			if (Mathf.Abs(Input.GetAxis("Mouse ScrollWheel"))>0.001f){
 				if (curCoin !=  null)

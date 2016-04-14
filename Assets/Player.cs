@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class Player : NetworkBehaviour {
 
-	[SyncVar]
+	//[SyncVar]
 	public int playerID=0;
 	[SyncVar]
 	public float force = 1.0f;
