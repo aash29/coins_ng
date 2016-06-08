@@ -114,11 +114,19 @@ public class select : NetworkBehaviour {
 
 
     [Command]
-	void CmdHandleClick(Vector3 ev, int button, float force)
+	 void CmdHandleClick(Vector3 ev, int button, float force)
 	{
 
         Debug.Log("clicked");
         if (button == 0) {
+
+			if (Input.GetKey (KeyCode.LeftControl)) {
+				ev.y = 0.1f;
+				if (GetComponentInParent<Player> ().force > 0.25f) {
+					GameObject.Find ("root1").GetComponent<setupLevel> ().CmdSpawnCoin (ev, GameObject.Find ("root1").GetComponent<globals> ().curPlayer);
+				}
+				return;
+			}
 
 						if (curCoin == null) {
 								RaycastHit hit = new RaycastHit ();

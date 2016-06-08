@@ -72,7 +72,7 @@ public class setupLevel : NetworkBehaviour {
 	}
 
 	[Command]
-	void CmdSpawnCoin(Vector3 pos, int player)
+	public void CmdSpawnCoin(Vector3 pos, int player)
 	{
 		GameObject c1 = (GameObject)Instantiate (coinPrefab, pos, Quaternion.identity);
 		c1.GetComponent<coin> ().player = player;
