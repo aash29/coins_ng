@@ -122,8 +122,10 @@ public class select : NetworkBehaviour {
 
 			if (Input.GetKey (KeyCode.LeftControl)) {
 				ev.y = 0.1f;
-				if (GetComponentInParent<Player> ().force > 0.25f) {
+				if (GetComponentInParent<Player> ().force >= 0.5f) {
 					GameObject.Find ("root1").GetComponent<setupLevel> ().CmdSpawnCoin (ev, GameObject.Find ("root1").GetComponent<globals> ().curPlayer);
+					GetComponentInParent<Player>().force-=0.5f;
+					
 				}
 				return;
 			}
